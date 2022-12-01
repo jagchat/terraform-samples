@@ -11,9 +11,10 @@ Basic demonstration (and sample) to test terraform
 ## Usage
 
 - Provide `access-key`, `secret-key` and `token` (only if MFT) as needed in `main.tf`
-- Initialize terraform in current folder. This step is needed only once to download respective provider to local folder
+- Initialize terraform in the script folder. This step is needed only once to download respective provider to local folder
 
 ```bash
+> cd 01-simple-auth
 > terraform init
 ```
 
