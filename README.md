@@ -10,7 +10,7 @@ Basic demonstration (and sample) to test terraform
 
 ## Usage
 
-- Provide `access-key`, `secret-key` and `token` (only if MFT) as needed in `main.tf`
+- Provide `access-key`, `secret-key` and `token` (for MFA) as needed in `main.tf`
 - Initialize terraform in the script folder. This step is needed only once to download respective provider to local folder
 
 ```bash
