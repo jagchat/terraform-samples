@@ -6,7 +6,7 @@ Basic demonstration (and sample) to test terraform
 
 - Ensure AWS CLI is installed and configured
 - Ensure "terraform" is installed
-- only `main.tf` is required for this demo
+- Only `main.tf` is required for this demo
 
 ## Usage
 
@@ -14,7 +14,6 @@ Basic demonstration (and sample) to test terraform
 - Initialize terraform in the script folder. This step is needed only once to download respective provider to local folder
 
 ```bash
-> cd 01-simple-auth
 > terraform init
 ```
 
