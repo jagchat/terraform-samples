@@ -20,10 +20,9 @@ my_bucket_name = "just-tf-test-bucket"
 }
 ```
 
-- All of the following `tfvars` filenames are valid and we can use as needed:
-
-terraform.tfvars
-terraform.tfvars.json
-SomeName.auto.tfvars
-SomeName.auto.tfvars.json
+* All of the following `tfvars` filenames are valid and we can use as needed:
+    * terraform.tfvars
+    * terraform.tfvars.json
+    * SomeName.auto.tfvars
+    * SomeName.auto.tfvars.json
 
