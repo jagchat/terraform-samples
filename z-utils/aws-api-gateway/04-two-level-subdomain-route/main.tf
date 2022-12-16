@@ -16,8 +16,8 @@ provider "aws" {
 }
 
 locals {
-  hosted_zone_name = "rnd.zone"
-  domain_name      = "rnd.zone"
+  hosted_zone_name = "dev.notifications.rnd.zone"
+  domain_name      = "dev.notifications.rnd.zone"
 }
 
 data "aws_route53_zone" "dns_zone" {
@@ -51,5 +51,3 @@ module "api-gateway-deploy" {
     module.ssl-certificate
   ]
 }
-
-

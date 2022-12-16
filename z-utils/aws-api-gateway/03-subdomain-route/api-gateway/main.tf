@@ -1,7 +1,10 @@
 variable "domain_name" {}
+output "rest_api_id" {
+  value = aws_api_gateway_rest_api.rest_api.id
+}
 
 resource "aws_api_gateway_rest_api" "rest_api" {
-  name = "sample-rest-api"
+  name = "sample-rest-api-2"
 
   endpoint_configuration {
     types = ["EDGE"]
@@ -11,8 +14,9 @@ resource "aws_api_gateway_rest_api" "rest_api" {
 #->define REST resource
 resource "aws_api_gateway_resource" "rest_api_resource_emp" {
   rest_api_id = aws_api_gateway_rest_api.rest_api.id
-  parent_id   = aws_api_gateway_rest_api.rest_api.root_resource_id # says to start from root (like /employee)
-  path_part   = "employee"
+  //The following says the current path should start from root (like /employee)
+  parent_id = aws_api_gateway_rest_api.rest_api.root_resource_id # says to start from root (like /employee)
+  path_part = "employee"
 }
 
 #->define HTTP Method for REST resource
@@ -57,29 +61,10 @@ resource "aws_api_gateway_integration_response" "rest_api_get_method_integration
   status_code = aws_api_gateway_method_response.rest_api_emp_get_method_response_200.status_code
   response_templates = { #always returns same data
     "application/json" = jsonencode({
-      "empno" : 1001,
+      "empno" : 1002,
       "ename" : "Jag"
     })
   }
 }
 
-#->following resources deploy the api for respective stage
-resource "aws_api_gateway_deployment" "rest_api_deployment" {
-  rest_api_id = aws_api_gateway_rest_api.rest_api.id
-  triggers = {
-    redeployment = sha1(timestamp())
-  }
-  lifecycle {
-    create_before_destroy = true
-  }
-}
-resource "aws_api_gateway_stage" "rest_api_stage" {
-  deployment_id = aws_api_gateway_deployment.rest_api_deployment.id
-  rest_api_id   = aws_api_gateway_rest_api.rest_api.id
-  stage_name    = "dev"
-}
-resource "aws_api_gateway_base_path_mapping" "rest_api_base_path_mapping" {
-  api_id      = aws_api_gateway_rest_api.rest_api.id
-  stage_name  = aws_api_gateway_stage.rest_api_stage.stage_name
-  domain_name = var.domain_name
-}
+

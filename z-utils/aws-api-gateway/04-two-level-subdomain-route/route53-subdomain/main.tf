@@ -17,8 +17,8 @@ provider "aws" {
 
 locals {
   apex_hosted_zone_name     = "rnd.zone"
-  notifications_hosted_name = "notifications.rnd.zone"
-  route_53_record_name      = "notifications"
+  notifications_hosted_name = "dev.notifications.rnd.zone"
+  route_53_record_name      = "dev.notifications"
 }
 
 data "aws_route53_zone" "dns_apex" {
@@ -31,7 +31,7 @@ resource "aws_route53_zone" "dns_notifications" {
 }
 
 #Each "parent" hosted zone will need to add a "NS" record for each "child" hosted zone.
-#"rnd.zone" would need to have an NS record for "notifications.rnd.zone"
+#"rnd.zone" would need to have an NS record for "dev.notifications.rnd.zone"
 resource "aws_route53_record" "ns_record_notifications" {
   type    = "NS"
   zone_id = data.aws_route53_zone.dns_apex.id

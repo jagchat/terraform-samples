@@ -4,7 +4,7 @@ output "rest_api_id" {
 }
 
 resource "aws_api_gateway_rest_api" "rest_api" {
-  name = "sample-rest-api-1"
+  name = "sample-rest-api-3"
 
   endpoint_configuration {
     types = ["EDGE"]
@@ -15,7 +15,7 @@ resource "aws_api_gateway_rest_api" "rest_api" {
 resource "aws_api_gateway_resource" "rest_api_resource_emp" {
   rest_api_id = aws_api_gateway_rest_api.rest_api.id
   //The following says the current path should start from root (like /employee)
-  parent_id = aws_api_gateway_rest_api.rest_api.root_resource_id
+  parent_id = aws_api_gateway_rest_api.rest_api.root_resource_id # says to start from root (like /employee)
   path_part = "employee"
 }
 
@@ -61,8 +61,10 @@ resource "aws_api_gateway_integration_response" "rest_api_get_method_integration
   status_code = aws_api_gateway_method_response.rest_api_emp_get_method_response_200.status_code
   response_templates = { #always returns same data
     "application/json" = jsonencode({
-      "empno" : 1001,
+      "empno" : 1003,
       "ename" : "Jag"
     })
   }
 }
+
+
