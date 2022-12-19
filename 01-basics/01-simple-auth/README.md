@@ -11,6 +11,10 @@ Basic demonstration (and sample) to test terraform
 ## Usage
 
 - Provide `access-key`, `secret-key` and `token` (for MFA) as needed in `main.tf`
+    - If AWS configuration is available as part of `.aws/config`, we can use following command:
+    ```bash
+    export AWS_PROFILE=<your-profile-name>
+    ```
 - Initialize terraform in the script folder. This step is needed only once to download respective provider to local folder
 
 ```bash
