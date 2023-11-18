@@ -7,6 +7,7 @@
 **/*.tfstate
 **/*.tfstate.*
 **/*.zip
+*.terraform.lock.*
 
 # Crash log files
 crash.log
