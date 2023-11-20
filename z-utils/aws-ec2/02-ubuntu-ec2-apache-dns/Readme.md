@@ -1,6 +1,6 @@
 # Quick Notes
 
-# Create Ubuntu EC2 web server and setup hosted zone (existing domain)
+# Create Ubuntu EC2, Install/Setup Apache Web Server and setup hosted zone (existing domain)
 
 This terraform sample demonstrates following:
 
@@ -79,3 +79,9 @@ sudo systemctl status apache2
 ```
 
 - Also, logs of our startup script are preserved in `/var/log/user-data.log` file in EC2
+
+- We can also check firewall configuration as follows:
+
+```bash
+sudo ufw status numbered
+```
